@@ -1,0 +1,230 @@
+/* General */
+
+:root {
+    --main: hsl(236, 72%, 79%);
+    --main2: hsl(237, 63%, 64%);
+    --vl-grayish-blue: hsl(240, 78%, 98%);
+    --l-grayish-blue: hsl(234, 14%, 74%);
+    --grayish-blue: hsl(233, 13%, 49%);
+    --d-grayish-blue: hsl(232, 13%, 33%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+html,
+body {
+    font-size: 15px;
+}
+
+body {
+    display: flex;
+    min-height: 100%;
+    background: url('./../images/bg-top.svg') no-repeat top right, url('./../images/bg-bottom.svg') no-repeat bottom left var(--vl-grayish-blue);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pricing {
+    padding: 3rem 1rem;
+}
+
+/* HEADER */
+.pricing__header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.pricing__title {
+    margin-bottom: 2rem;
+    color: var(--d-grayish-blue);
+    font-size: 1.75rem;
+}
+
+/* PRICING TABLE */
+.pricing__col {
+    margin: 2rem 1rem;
+    padding: 2rem;
+    background-color: white;
+    text-align: center;
+    color: var(--grayish-blue);
+    border-radius: 8px;
+}
+
+.pricing__col--active {
+    background-image: linear-gradient(to bottom right, var(--main), var(--main2));
+    color: white;
+}
+
+.pricing__col--active .pricing__price {
+    color: white;
+}
+
+.pricing__price {
+    display: inline-flex;
+    margin: 2rem 0;
+    color: var(--d-grayish-blue);
+    font-size: 4rem;
+    align-items: center;
+}
+
+.pricing--month .pricing__price--year {
+    display: none;
+}
+
+.pricing--year .pricing__price--month {
+    display: none;
+}
+
+.currency {
+    margin-right: .25rem;
+    font-size: 2.5rem;
+}
+
+.pricing__usps {
+    margin-bottom: 2rem;
+    list-style-type: none;
+}
+
+.pricing__usps li {
+    padding: 1.25rem;
+    border-top: 1px solid var(--l-grayish-blue);
+}
+
+.pricing__usps li:last-child {
+    border-bottom: 1px solid var(--l-grayish-blue);
+}
+
+.pricing__button {
+    display: block;
+    padding: 1rem;
+    background-image: linear-gradient(to right, var(--main), var(--main2));
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .8rem;
+    border: 1px solid transparent;
+}
+
+.pricing__button:hover,
+.pricing__button:focus {
+    background-image: none;
+    background-color: transparent;
+    color: var(--main2);
+    border-color: var(--main2);
+    outline: 0;
+}
+
+.pricing__col--active .pricing__button {
+    background-image: none;
+    background-color: white; 
+    color: var(--main2);
+    border-color: white;   
+}
+
+.pricing__col--active .pricing__button:hover,
+.pricing__col--active .pricing__button:focus {
+    background-color: transparent;
+    color: white;
+}
+
+
+/* CHECKBOX TOGGLE */
+.pricing__switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pricing__label {
+    color: var(--l-grayish-blue);
+    text-decoration: none;
+}
+
+.toggle__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toggle__switch {
+    position: relative;
+    display: inline-flex;
+    margin: 0 10px;
+}
+
+.toggle__switch:before {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+    background-image: linear-gradient(to right, var(--main), var(--main2));
+    border-radius: 25px;
+    opacity: 0.7;
+    transition: opacity .3s ease-in-out;
+}
+
+.toggle__switch:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 6px;
+    top: 3px;
+    background-color: white;
+    border-radius: 100%;
+    transition: left .3s ease-in-out;
+}
+
+.toggle__input:checked + .toggle__switch:after {
+    left: 29px;
+}
+
+.toggle:hover .toggle__switch:before,
+.toggle__input:focus + .toggle__switch:before {
+    opacity: 1;
+}
+
+/* FOOTER */
+.attribution { 
+    padding: 2rem;
+    font-size: 11px; 
+    text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 768px) {
+    .pricing__row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .pricing__col {
+        margin: 0;
+        flex: 0 1 300px;
+    }
+    .pricing__col--active {
+        padding: 3rem 2rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .pricing__price {
+        font-size: 3rem;
+    }
+}
